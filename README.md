@@ -1,17 +1,21 @@
 munin-rpi-internal-temp
 =======================
 
-Munin plugin for monitoring Raspberry Pi internal temperature
+Munin plugin for monitoring Raspberry Pi internal temperature: rpi-internal-temp
+Munin plugin for monitoring a DS18B20 OneWire based temperature sensor connected to the Raspberry Pi: rpi-w1-temp
 
 Installation
 ------------
 
-1. Copy this file to /etc/munin/plugins
+0. To use the OneWire sensor load kernel modules: w1-gpio w1-therm
+You can add them also to /etc/modules
+
+1. Copy the plugin files to /etc/munin/plugins
 
 OR (cleaner)
 
-1a. Copy this file to /usr/share/munin/plugins
-
-1b. ln -sf /usr/share/munin/plugins/rpi-internal-temp ./rpi-internal-temp 
+1. Copy the plugin files to /usr/share/munin/plugins and link them
+ln -sf /usr/share/munin/plugins/rpi-internal-temp /etc/munin/plugins/rpi-internal-temp
+ln -sf /usr/share/munin/plugins/rpi-w1-temp /etc/munin/plugins/rpi-w1-temp
 
 2. Reload munin
