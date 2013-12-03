@@ -15,6 +15,8 @@ elif [ "$1" == "config" ]; then
      echo "graph_args --base 1000 -l 0"
      echo "graph_vlabel Temperature in Celsius"
      echo "graph_category Sensors"
+     echo "temp.warning 60"
+     echo "temp.critical 80"
      echo "temp.label temp"
 else
      temp=$(cat /sys/class/thermal/thermal_zone0/temp)
