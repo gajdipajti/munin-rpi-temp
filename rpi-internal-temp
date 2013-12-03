@@ -17,7 +17,7 @@ elif [ "$1" == "config" ]; then
      echo "graph_category Sensors"
      echo "temp.warning 60"
      echo "temp.critical 80"
-     echo "temp.label temp"
+     echo "temp.label CPU"
 else
      temp=$(cat /sys/class/thermal/thermal_zone0/temp)
      temp=$(awk "BEGIN { print $temp/1000 }")
