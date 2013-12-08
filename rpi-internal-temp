@@ -20,6 +20,5 @@ elif [ "$1" == "config" ]; then
      echo "temp.label CPU"
 else
      temp=$(cat /sys/class/thermal/thermal_zone0/temp)
-     temp=$(awk "BEGIN { print $temp/1000 }")
-     echo "temp.value $temp"
+     awk "BEGIN { print \"temp.value \" $temp/1000 }"
 fi

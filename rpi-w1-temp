@@ -23,6 +23,5 @@ elif [ "$1" == "config" ]; then
 else 
      w1_slave=$(cat /sys/devices/w1_bus_master1/w1_master_slaves)
      temp=$(tail -1 /sys/bus/w1/devices/$w1_slave/w1_slave | cut -d ' ' -f 10-11 | sed 's/[^=]*=//' )
-     temp=$(awk "BEGIN { print $temp/1000 }")
-     echo "temp.value $temp"
+     awk "BEGIN { print \"temp.value \" $temp/1000 }"
 fi
