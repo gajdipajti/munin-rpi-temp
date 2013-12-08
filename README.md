@@ -18,4 +18,5 @@ OR (cleaner)
 ln -sf /usr/share/munin/plugins/rpi-internal-temp /etc/munin/plugins/rpi-internal-temp
 ln -sf /usr/share/munin/plugins/rpi-w1-temp /etc/munin/plugins/rpi-w1-temp
 
-2. Reload munin
+2. Reload munin-node
+
