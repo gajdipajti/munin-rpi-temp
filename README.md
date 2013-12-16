@@ -15,7 +15,11 @@ You can add them also to /etc/modules
 OR (cleaner)
 
 1. Copy the plugin files to /usr/share/munin/plugins and link them
+
 ln -sf /usr/share/munin/plugins/rpi-internal-temp /etc/munin/plugins/rpi-internal-temp
+
+ln -sf /usr/share/munin/plugins/rpi-internal-freq /etc/munin/plugins/rpi-internal-freq
+
 ln -sf /usr/share/munin/plugins/rpi-w1-temp /etc/munin/plugins/rpi-w1-temp
 
 2. Reload munin-node
