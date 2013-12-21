@@ -30,7 +30,7 @@ else
 	for w1_slave in $(cat /sys/devices/w1_bus_master1/w1_master_slaves)
 	do
 	     temp=$(tail -1 /sys/bus/w1/devices/$w1_slave/w1_slave | cut -d ' ' -f 10-11 | sed 's/[^=]*=//' )
-	     awk "BEGIN { print \"temp$I.value \" $temp/1000 }"
+	     awk "BEGIN { printf \"temp$I.value %2.3f\n\", $temp/1000 }"
 	     I=$(($I+1));
 	done
 fi
