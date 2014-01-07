@@ -1,7 +1,7 @@
 munin-rpi-internal-temp
 =======================
 
-Check the wiki page for results or the [blog post in hungarian](http://logout.hu/cikk/homerseklet_mero_pi/teljes.html)
+Check the [wiki page](https://github.com/gajdipajti/munin-rpi-temp/wiki) for results or the [blog post in hungarian](http://logout.hu/cikk/homerseklet_mero_pi/teljes.html)
 
 Munin plugin for monitoring Raspberry Pi internal temperature: rpi-internal-temp
 
