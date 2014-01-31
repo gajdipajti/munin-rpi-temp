@@ -1,25 +1,21 @@
 #!/bin/bash
+
 # Based on a script by a man named Andrew
 # Originally located at http://blog.theinternets.be/rpi-munin-temperatures/
 # Don't forget to load kernel modules: w1-gpio w1-therm
+# Change OneWire device address
 
 if [ "$1" == "autoconf" ]; then
-     if [ -e /sys/devices/w1_bus_master1/w1_master_slaves ]; then
+     if [ -e /usr/bin/local/Adafruit:DHT ]; then
          echo "yes"
      else
          echo "no"
          exit 1
      fi
 elif [ "$1" == "config" ]; then
-     echo "graph_title Raspberry Pi OneWire Temperature"
-     echo "graph_vlabel Temperature in Celsius"
+     echo "graph_title Raspberry DHT Sensor"
      echo "graph_category Sensors"
-     I=1;
-     for w1_slave in $(cat /sys/devices/w1_bus_master1/w1_master_slaves)
-     do
-     	echo "temp$I.warning 30"
-     	echo "temp$I.critical 40"
-     	echo "temp$I.label $w1_slave"
+     echo "temp.label "
         I=$((I+1));
      done
 else

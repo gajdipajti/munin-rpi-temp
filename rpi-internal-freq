@@ -1,7 +1,5 @@
 #!/bin/bash
-
-# Based on a script by a man named Andrew
-# Originally located at http://blog.theinternets.be/rpi-munin-temperatures/
+# A basic munin-node plugin to monitor the Raspberry Pi CPU frequency.
 
 if [ "$1" == "autoconf" ]; then
      if [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq ]; then

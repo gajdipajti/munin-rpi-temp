@@ -1,7 +1,5 @@
 #!/bin/bash
-
-# Based on a script by a man named Andrew
-# Originally located at http://blog.theinternets.be/rpi-munin-temperatures/
+# A basic munin-node script to monitor the Raspberry Pi temperature
 
 if [ "$1" == "autoconf" ]; then
      if [ -e /sys/class/thermal/thermal_zone0/temp ]; then
