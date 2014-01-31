@@ -48,7 +48,7 @@ else
     while [ "$OK" -gt -1 ]; do
 	data=$( /usr/local/bin/Adafruit_DHT ${sensor_TYPE%_*} $sensor_GPIO | tail -1 )
         if [[ "$data" =~ "Data" ]]; then
-	    sleep 3
+	    sleep 1
 #	    echo $data
 	    ((OK++))
         else
