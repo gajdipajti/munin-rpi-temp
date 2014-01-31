@@ -12,6 +12,17 @@ sensor_TYPE=${0##*/rpi-dht-sensor_}
 #echo $sensor_GPIO
 #echo ${sensor_TYPE%_*}
 
+#function read_SENSOR {
+#    data=$( /usr/local/bin/Adafruit_DHT ${sensor_TYPE%_*} $sensor_GPIO | tail -1 )
+#    if [[ "$data" =~ "Data" ]]; then
+#	return "#E#"
+#    else
+#        return "humidity.value ${data:23:4}\ntemp.value ${data:8:4}"
+#    fi
+#}
+
+
+
 if [[ ! "11 22 2302" =~ "${sensor_TYPE%_*}" ]]; then
     echo "Please add a sensor type to the symlink. See usage!"
 elif [[ ! "$sensor_GPIO" =~ [0-9] ]]; then
@@ -31,13 +42,21 @@ elif [ "$1" == "config" ]; then
      echo "temp.critical 40"
      echo "temp.label Temperature in Celsius"
      echo "humidity.label Humidity in Percent"
+     echo "err.label	Error Counter"
 else
-    data=$( Adafruit_DHT 2302 24 | tail -1 )
-    echo $data
-
-
-#	     temp=$(tail -1 /sys/bus/w1/devices/$w1_slave/w1_slave | cut -d ' ' -f 10-11 | sed 's/[^=]*=//' )
-#	     awk "BEGIN { printf \"temp$I.value %2.3f\n\", $temp/1000 }"
-#	     I=$(($I+1));
-#	done
+    OK=0
+    while [ "$OK" -gt -1 ]; do
+	data=$( /usr/local/bin/Adafruit_DHT ${sensor_TYPE%_*} $sensor_GPIO | tail -1 )
+        if [[ "$data" =~ "Data" ]]; then
+	    sleep 3
+#	    echo $data
+	    ((OK++))
+        else
+	    echo "humidity.value ${data:23:4}"
+	    echo "temp.value ${data:8:4}"
+	    echo "err.value $OK"
+	    OK=-1;
+        fi
+    done
 fi
+
