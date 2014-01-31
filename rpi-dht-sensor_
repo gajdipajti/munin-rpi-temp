@@ -1,0 +1,43 @@
+#!/bin/bash
+# A basic munin-node plugin for AOSONG DHT11, DHT22, AM2302 sensors.
+# Temperature and Humidity
+
+# USAGE
+# Please make the symlink as rpi-dht-sensor_TYPE_GPIOPIN
+# Example rpi-dht-sensor_2302_24
+
+sensor_GPIO=${0##*/rpi-dht-sensor_*_}
+sensor_TYPE=${0##*/rpi-dht-sensor_}
+
+#echo $sensor_GPIO
+#echo ${sensor_TYPE%_*}
+
+if [[ ! "11 22 2302" =~ "${sensor_TYPE%_*}" ]]; then
+    echo "Please add a sensor type to the symlink. See usage!"
+elif [[ ! "$sensor_GPIO" =~ [0-9] ]]; then
+    echo "Please specify the GPIO pin!"
+elif [ "$1" == "autoconf" ]; then
+     if [ -e /usr/bin/local/Adafruit_DHT ]; then
+         echo "yes"
+     else
+         echo "no"
+         exit 1
+     fi
+elif [ "$1" == "config" ]; then
+     echo "graph_title Raspberry Pi Aosong ${sensor_TYPE%_*} Sensor"
+     echo "graph_vlabel Humidity and Temperature"
+     echo "graph_category Sensors"
+     echo "temp.warning 30"
+     echo "temp.critical 40"
+     echo "temp.label Temperature in Celsius"
+     echo "humidity.label Humidity in Percent"
+else
+    data=$( Adafruit_DHT 2302 24 | tail -1 )
+    echo $data
+
+
+#	     temp=$(tail -1 /sys/bus/w1/devices/$w1_slave/w1_slave | cut -d ' ' -f 10-11 | sed 's/[^=]*=//' )
+#	     awk "BEGIN { printf \"temp$I.value %2.3f\n\", $temp/1000 }"
+#	     I=$(($I+1));
+#	done
+fi
