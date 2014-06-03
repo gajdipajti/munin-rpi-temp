@@ -30,6 +30,9 @@ ln -sf /usr/share/munin/plugins/rpi-w1-temp /etc/munin/plugins/rpi-w1-temp
 2. Reload munin-node
 
 DHT sensors: munin will need root access: /etc/munin/plugin-conf.d/sensors
+
 [rpi-dht-sensor_*]
+
 user root
+
 group root
