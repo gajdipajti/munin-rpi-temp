@@ -15,7 +15,7 @@ elif [ "$1" == "config" ]; then
      echo "graph_vlabel Temperature in Celsius"
      echo "graph_category Sensors"
      I=1;
-     for w1_slave in $(cat /sys/devices/w1_bus_master1/w1_master_slaves)
+     for w1_slave in $(cat /sys/devices/w1_bus_master1/w1_master_slaves | sort)
      do
      	echo "temp$I.warning 30"
      	echo "temp$I.critical 40"
@@ -24,7 +24,7 @@ elif [ "$1" == "config" ]; then
      done
 else
 	I=1;
-	for w1_slave in $(cat /sys/devices/w1_bus_master1/w1_master_slaves)
+	for w1_slave in $(cat /sys/devices/w1_bus_master1/w1_master_slaves | sort)
 	do
 	     temp=$(tail -1 /sys/bus/w1/devices/$w1_slave/w1_slave | cut -d ' ' -f 10-11 | sed 's/[^=]*=//' )
 	     awk "BEGIN { printf \"temp$I.value %2.3f\n\", $temp/1000 }"
