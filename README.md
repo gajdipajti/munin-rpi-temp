@@ -36,3 +36,10 @@ DHT sensors: munin will need root access: /etc/munin/plugin-conf.d/sensors
 user root
 
 group root
+
+Kernel 3.18.* PROBLEM
+---------------------
+
+The new Raspberry Pi kernel has switched to device trees, this will break the w1 module.
+[link](http://www.raspberrypi.org/forums/viewtopic.php?p=675658#p675658)
+[link](http://raspberrypi.stackexchange.com/questions/27073/firmware-3-18-x-breaks-i2c-spi-audio-lirc-1-wire-e-g-dev-i2c-1-no-such-f)
