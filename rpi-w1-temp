@@ -26,8 +26,20 @@ else
 	I=1;
 	for w1_slave in $(cat /sys/devices/w1_bus_master1/w1_master_slaves | sort)
 	do
-	     temp=$(tail -1 /sys/bus/w1/devices/$w1_slave/w1_slave | cut -d ' ' -f 10-11 | sed 's/[^=]*=//' )
-	     awk "BEGIN { printf \"temp$I.value %2.3f\n\", $temp/1000 }"
-	     I=$(($I+1));
+	  OK=1
+	  while [ "$OK" -ne 0 ]; do
+	     file=$(</sys/bus/w1/devices/$w1_slave/w1_slave)
+	     temp=$(echo $file | sed -e 's/^.*=//' )
+	     if [[ "$file" =~ "YES" ]] 
+	     then
+		OK=0
+	     fi 
+	  done
+	  awk "BEGIN { printf \"temp$I.value %2.3f\n\", $temp/1000 }"
+	  I=$(($I+1));
+	     
 	done
 fi
+
+
+
