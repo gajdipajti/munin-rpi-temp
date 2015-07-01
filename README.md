@@ -57,3 +57,8 @@ Add the following lines to the end of /boot/config.txt
 
     # 1-wire device tree
     dtoverlay=w1-gpio,gpiopin=4
+
+Kernel 4.0.* DHT11 overlay
+--------------------------
+
+The current code is not compatible with the DHT11 overlay. I experimented with it, but 3 out of 5 reads have failed. [link](https://github.com/raspberrypi/linux/pull/1017)
