@@ -62,3 +62,4 @@ Kernel 4.0.* DHT11 overlay
 --------------------------
 
 The current code is not compatible with the DHT11 overlay. I experimented with it, but 3 out of 5 reads have failed. [link](https://github.com/raspberrypi/linux/pull/1017)
+Just keep using the adafruit code.
