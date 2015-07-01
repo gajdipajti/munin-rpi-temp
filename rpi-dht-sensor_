@@ -28,7 +28,7 @@ if [[ ! "11 22 2302" =~ "${sensor_TYPE%_*}" ]]; then
 elif [[ ! "$sensor_GPIO" =~ [0-9] ]]; then
     echo "Please specify the GPIO pin!"
 elif [ "$1" == "autoconf" ]; then
-     if [ -e /usr/bin/local/Adafruit_DHT ]; then
+     if [ -e /usr/local/bin/Adafruit_DHT ]; then
          echo "yes"
      else
          echo "no"
