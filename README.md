@@ -27,7 +27,17 @@ ln -sf /usr/share/munin/plugins/rpi-internal-freq /etc/munin/plugins/rpi-interna
 
 ln -sf /usr/share/munin/plugins/rpi-w1-temp /etc/munin/plugins/rpi-w1-temp
 
-2. Reload munin-node
+
+2. Set the plugins executable
+
+chmod a+x /usr/share/munin/plugins/rpi-internal-temp
+
+chmod a+x /usr/share/munin/plugins/rpi-internal-freq
+
+chmod a+x /usr/share/munin/plugins/rpi-w1-temp
+
+
+3. Reload munin-node
 
 DHT sensors
 -----------
