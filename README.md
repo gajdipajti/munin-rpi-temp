@@ -9,6 +9,11 @@ Munin plugin for monitoring a DS18B20 OneWire based temperature sensor connected
 
 Munin plugin for monitoring temperature and humidity with an Aosong 2302, DHT11, DHT22 connected to the Raspberry Pi. This plugin uses the Adafruit binary from https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/software-install
 
+If you use the code
+------------
+
+Please give me a star, because it is a good feeling that I helped someone. :)
+
 Installation
 ------------
 
