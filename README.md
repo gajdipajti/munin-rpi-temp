@@ -7,7 +7,7 @@ Munin plugin for monitoring Raspberry Pi internal temperature: rpi-internal-temp
 
 Munin plugin for monitoring a DS18B20 OneWire based temperature sensor connected to the Raspberry Pi: rpi-w1-temp
 
-Munin plugin for monitoring temperature and humidity with an Aosong 2302, DHT11, DHT22 connected to the Raspberry Pi. This plugin uses the Adafruit binary from https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/software-install
+Munin plugin for monitoring temperature and humidity with an Aosong 2302, DHT11, DHT22 connected to the Raspberry Pi. This plugin uses the Adafruit binary from https://github.com/adafruit/Adafruit_Python_DHT
 
 If you use the code
 ------------
@@ -47,7 +47,8 @@ chmod a+x /usr/share/munin/plugins/rpi-w1-temp
 DHT sensors
 -----------
 
-copy the bin folder content to /usr/local/bin
+Do the Adafruit setup and copy the AdafruitDHT.py to /usr/local/bin
+Give exec permission: sudo chmod +x /usr/local/bin/Adafruit.py
 
 munin will need root access: /etc/munin/plugin-conf.d/sensors
 
