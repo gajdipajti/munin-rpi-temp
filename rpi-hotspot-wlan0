@@ -1,0 +1,21 @@
+#!/bin/bash
+# A basic munin-node script to monitor the number of connected clients
+
+if [ "$1" == "autoconf" ]; then
+     if iw dev | grep -q "type\sAP"; then
+         echo "yes"
+     else
+         echo "no"
+         exit 1
+     fi
+elif [ "$1" == "config" ]; then
+     echo "graph_title Connected clients"
+     echo "graph_vlabel Number"
+     echo "graph_category Network"
+     echo "iw.warning 10"
+     echo "iw.critical 30"
+     echo "iw.label wlan0"
+else
+     iwnr=$(iw dev wlan0 station dump | grep Station | wc -l)
+     awk "BEGIN { print \"iw.value \" $iwnr }"
+fi

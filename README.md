@@ -44,6 +44,11 @@ chmod a+x /usr/share/munin/plugins/rpi-w1-temp
 
 3. Reload munin-node
 
+Monitor hotspot
+---------------
+
+Use the rpi-hotspot-wlan0 script, tested on the OrangePi Zero.
+
 DHT sensors
 -----------
 
