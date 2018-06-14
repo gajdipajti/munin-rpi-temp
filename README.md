@@ -55,9 +55,12 @@ DHT sensors
 Do the Adafruit setup and copy the AdafruitDHT.py to /usr/local/bin
 Give exec permission: sudo chmod +x /usr/local/bin/Adafruit.py
 
-munin will need root access: /etc/munin/plugin-conf.d/sensors
+Munin plugins not working
+-------------------------
 
-[rpi-dht-sensor_*]
+munin will need root access: /etc/munin/plugin-conf.d/rpi
+
+[rpi-*]
 
 user root
 
